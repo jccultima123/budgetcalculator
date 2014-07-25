@@ -67,14 +67,14 @@ var budget_calculator = (function($){
 		for(var i in expensesObj['outgoings']){
 			var e = expensesObj['outgoings'][i];
 			outgoings_total = outgoings_total+e.value * e.freq;
-		}
+		}	
 		var outgoings_percent = (outgoings_total/income_total)*100;
 		var income_percent = 100-outgoings_percent;
 		var savings_total = parseInt(income_total - outgoings_total,10);
 		var savings_percentage = (savings_total/income_total)*100;
-		display_percents('.total-income', income_total, income_percent)
-		display_percents('.total-outgoings', outgoings_total, outgoings_percent)
-		display_percents('.total-savings', savings_total, savings_percentage)
+		display_percents('.total-income', income_total, income_percent);if(isNaN(income_percent)){display_percents('.total-income', 0, 0)}
+		display_percents('.total-outgoings', outgoings_total, outgoings_percent);if(isNaN(outgoings_percent)){display_percents('.total-outgoings', 0, 0)}
+		display_percents('.total-savings', savings_total, savings_percentage);if(isNaN(savings_percentage)){display_percents('.total-savings', 0, 0)}
 	}
 	//Function to calculate the incomes or outgoings
 	function calc_costs(){
